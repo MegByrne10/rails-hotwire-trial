@@ -1,0 +1,18 @@
+<div class="group">
+  <div class="relative">
+    <div class="aspect-square w-full max-h-[500px] overflow-hidden rounded-lg object-cover sm:aspect-2/3">
+      <%= image_tag photo.source_md_url, alt: photo.photographer_name, class: "w-full h-full object-cover", alt: photo.alt.presence || "Photo of #{photo.photographer_name}" %>
+    </div>
+    <%= link_to photo.source_url,
+        target: "_blank",
+        class: "absolute bottom-2 right-2 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/75 hover:bg-white/90 p-1"  do %>
+      <%= image_tag "links.svg", alt: "Link to Source Photo", class: "h-8 w-8" %>
+    <% end %>
+  </div>
+
+  <div class="mt-4 flex items-center justify-between">
+    <h3 class="text-lg font-semibold text-gray-700">
+      <%= photo.photographer_name %>
+    </h3>
+  </div>
+</div>
