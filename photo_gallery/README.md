@@ -9,6 +9,37 @@ This app is a server-rendered Rails 8 photo gallery built for the Clever coding 
 - Render the gallery and like controls on the server, and update only the changed like UI with Turbo.
 - Add request/system/model tests around auth, like behavior, and counter cache correctness.
 
+## Local Setup
+
+From `photo_gallery/`:
+
+```bash
+bin/setup
+```
+
+This installs gems, prepares the DB, seeds users/photos, and starts `bin/dev`. The seeds are idempotent and can be safely re-run without creating duplicate records.
+
+If needed, run manually:
+
+```bash
+bin/rails db:prepare
+bin/rails db:seed
+bin/dev
+```
+
+Run tests with:
+
+```bash
+bundle exec rspec
+```
+
+## Seeded Access
+
+- `reviewer@example.com` / `password123`
+
+The seed script also creates sample users and random likes to make like-count states visible in the gallery.
+
+
 ## Requirement Mapping
 
 ### 1) Authentication
@@ -64,27 +95,3 @@ Run tests with:
 ```bash
 bundle exec rspec
 ```
-
-## Local Setup
-
-From `photo_gallery/`:
-
-```bash
-bin/setup
-```
-
-This installs gems, prepares the DB, seeds users/photos, and starts `bin/dev`. The seeds are idempotent and can be safely re-run without creating duplicate records.
-
-If needed, run manually:
-
-```bash
-bin/rails db:prepare
-bin/rails db:seed
-bin/dev
-```
-
-## Seeded Access
-
-- `reviewer@example.com` / `password123`
-
-The seed script also creates sample users and random likes to make like-count states visible in the gallery.
