@@ -1,0 +1,12 @@
+<div class="flex justify-end">
+  <% star_icon = photo.likes_count > 0 ? "star-fill.svg" : "star-line.svg" %>
+  <% star_color = liked_by_current_user ? "text-yellow-400 hover:text-yellow-500" : "text-gray-400 hover:text-gray-600" %>
+
+  <%= button_to photo_like_path(photo),
+      class: "inline-flex items-center justify-center px-4 py-2",
+      aria_label: "Like photo",
+      method: liked_by_current_user ? :delete : :post do %>
+      <%= inline_svg star_icon, classes: "h-6 w-6 #{star_color}" %>
+    <span class="ml-2 text-md text-gray-600"><%= photo.likes_count %></span>
+  <% end %>
+</div>

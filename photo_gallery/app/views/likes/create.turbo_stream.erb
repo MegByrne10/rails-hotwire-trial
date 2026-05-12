@@ -1,0 +1,7 @@
+<%= turbo_stream.update dom_id(@photo, :like) do %>
+  <% if @error_message.present? %>
+    <span class="text-xs justify-end text-red-500"><%= @error_message %></span>
+  <% end %>
+
+  <%= render "likes/like", photo: @photo, liked_by_current_user: @liked_by_current_user %>
+<% end %>

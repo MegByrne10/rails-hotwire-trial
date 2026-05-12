@@ -58,7 +58,6 @@ rows.each_with_index do |row, i|
   )
   if photo.new_record? || photo.changed?
     photo.save!
-    Photo.reset_counters(photo.id, :likes)
     created_or_updated += 1
   end
 end
@@ -71,6 +70,7 @@ puts "== Seeding random likes for sample users =="
 Like.where(user_id: sample_users.map(&:id)).delete_all
 
 all_photos = Photo.all
+all_photos.each { |photo| Photo.reset_counters(photo.id, :likes_count) }
 # Allways leaving one photo without likes to see a zero like count state
 photo_without_likes = all_photos.sample
 photos = all_photos - [photo_without_likes]
